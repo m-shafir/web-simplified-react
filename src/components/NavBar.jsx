@@ -12,8 +12,6 @@ export default function NavBar({ courses, wishList, cart, wishListToCart }) {
   const [data, setData] = useState([]);
   const [dataName, setDataName] = useState(null);
 
-
-
   const handleClose = () => setShow(false);
 
   const handleShow = (passesData, name) => {
@@ -91,6 +89,7 @@ export default function NavBar({ courses, wishList, cart, wishListToCart }) {
           ))}
         </Offcanvas.Body>
       </Offcanvas> */}
+
       <OffCanvas
         show={show}
         onHandleClose={handleClose}
@@ -134,12 +133,17 @@ function OffCanvas({
               <p className="text-success fw-bold">{course.price}</p>
               <button
                 className="btn btn-primary"
-                onClick={(e) => wishListToCart(e,course)}
+                onClick={(e) => wishListToCart(e, course)}
               >
                 Add to cart
               </button>
             </div>
           ))}
+          {visualData.length === 0 && (
+            <div className="d-flex justify-content-center align-items-center">
+              <h4 className="mt-5">No data available</h4>
+            </div>
+          )}
         </Offcanvas.Body>
       </Offcanvas>
     </>

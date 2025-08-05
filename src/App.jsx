@@ -295,7 +295,7 @@ export default function App() {
       return;
     } else if (cart.some((curr) => curr.title === course.title)) {
       toast.error("course already available in cart");
-      setWishlist((wishList) => [...wishList, course]);
+
       return;
     } else {
       setWishlist((wishList) => [...wishList, course]);
@@ -307,6 +307,9 @@ export default function App() {
   function wishListToCart(e, item) {
     if (cart.some((curr) => curr.title === item.title)) {
       toast.error("course already available in cart");
+      setWishlist((wishList) =>
+        wishList.filter((curr) => curr.title !== item.title)
+      );
       return;
     } else {
       setTimeout(() => {
